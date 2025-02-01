@@ -7,24 +7,6 @@ from webdriver_manager.firefox import GeckoDriverManager
 from webdriver_manager.microsoft import EdgeChromiumDriverManager
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
-
-@pytest.fixture(params=["chrome", "firefox", "edge"])
-def initialize_driver(request):
-    if request.param == "chrome":
-        driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
-    elif request.param == "firefox":
-        driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()))
-    elif request.param == "edge":
-        driver = webdriver.Edge(service=EdgeService(EdgeChromiumDriverManager().install()))
-    
-    driver.maximize_window() 
-    request.cls.driver = driver
-    
-    print("Browser: ", request.param)
-    yield
-    
-    print("Close Driver")
-    driver.quit()
     
 @pytest.mark.usefixtures("initialize_driver")
 class BaseClass:
