@@ -3,6 +3,7 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 import pytest
+import math
 
 @pytest.mark.parametrize("num1, num2, expected_total",
                          [("25", "25", "50"),
@@ -20,3 +21,11 @@ def test_lambdaest_two_input_fields(num1, num2, expected_total):
     result = driver.find_element(By.ID, "addmessage").text
     
     assert expected_total == result, "Wrong answer"
+    
+    
+@pytest.mark.parametrize("base", [1,  2, 3])
+@pytest.mark.parametrize("exponent", [4,  5, 6])
+
+def test_raising_base_to_power(base, exponent):
+    result = base ** exponent
+    assert result == math.pow(base, exponent)
