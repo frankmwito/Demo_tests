@@ -7,7 +7,7 @@ import pytest
 
 
 @pytest.mark.parametrize("name, expected_name",
-                         [("Franklyne", "Franklyne")])
+                         [("franklyne", "franklyne")])
 def test_name(name: Literal['Franklyne'], expected_name: Literal['Franklyne']):
     driver = webdriver.Chrome(service=chromeService(ChromeDriverManager().install()))
     driver.maximize_window()
