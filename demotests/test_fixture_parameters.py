@@ -21,18 +21,17 @@ def automatic_fixture():
     print("\nEnd of the tests")
     
 @pytest.fixture(params=["chrome", "edge", "firefox"])
-@pytest.fixture(scope="function")
 def driver_initializer(request):
     if request.param == "chrome":
         driver = webdriver.Chrome(service=chromeService(ChromeDriverManager().install()))
-    elif request.para == "edge":
+    elif request.param == "edge":
         driver = webdriver.Edge(service=edgeService(EdgeChromiumDriverManager().install()))
     elif request.param == "firefox":
         driver = webdriver.Firefox(service=firefoxService(GeckoDriverManager().install()))
-        
-    request.cls.driver = driver
+    driver.get("https://ecommerce-playground.lambdatest.io/")
+    driver.maximize_window()  
     print("Browser:  ",request.param)
-    yield
+    yield driver
     print("Close Driver")
     driver.quit()
     
