@@ -36,9 +36,9 @@ def driver_initializer1(request):
     yield driver
     print("\nClosing Browser")
     driver.quit()
-
     
-    
+# @pytest.mark.skip(reason= None) -> This will skip the test but reason is "skipped instance" equal to None
+@pytest.mark.skip(reason="Logic was not implemented by the developer")
 def test_registration(driver_initializer1):
     driver = driver_initializer1
     faker = Faker()
@@ -61,7 +61,6 @@ def test_registration(driver_initializer1):
     )
     register.click()
     
-    pytest.skip("Skipping this test")
     # Fill Registration Form
     driver.find_element(By.ID, "input-firstname").send_keys(first_name)
     driver.find_element(By.ID, "input-lastname").send_keys(last_name)
