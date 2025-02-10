@@ -19,7 +19,6 @@ def test_lambdaest_two_input_fields(num1, num2, expected_total):
     driver.find_element(By.ID, "sum2").send_keys(num2)
     driver.find_element(By.XPATH, "//button[normalize-space()='Get Sum']").click()
     result = driver.find_element(By.ID, "addmessage").text
-    
     assert expected_total == result, "Wrong answer"
     
     
