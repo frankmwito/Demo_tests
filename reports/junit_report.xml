@@ -1,26 +1,169 @@
-<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="2" skipped="11" tests="40" time="267.011" timestamp="2025-02-13T11:47:41.391167+03:00" hostname="DESKTOP-EQTA2OP"><testcase classname="demotests.test_fail.Test_Match" name="test_divide_number" time="0.016"><skipped type="pytest.xfail" message="Need To Investigate" /></testcase><testcase classname="demotests.test_fail.Test_Match" name="test_cube_number" time="0.013" /><testcase classname="demotests.test_parameter_2" name="test_areas[dimensions0-50-circle]" time="0.018"><failure message="AssertionError: Expected 50, but got 78.54&#10;assert 78.54 == 50">shape = 'circle', dimensions = (5, 10), expected_area = 50
-
-    @pytest.mark.parametrize("shape", ["rectangle", "circle"])
-    @pytest.mark.parametrize("dimensions, expected_area", [((5, 10), 50), ((10,), round(math.pi * 10**2, 2))])
-    def test_areas(shape, dimensions, expected_area):
-        if shape == "rectangle":
-            area = dimensions[0] * dimensions[1]  # width * height
-        elif shape == "circle":
-            area = round(math.pi * (dimensions[0] ** 2), 2)  # π * r^2
-        else:
-            raise ValueError("Invalid shape")
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="2" failures="0" skipped="2" tests="14" time="65.209" timestamp="2025-02-17T08:34:46.037195+03:00" hostname="DESKTOP-EQTA2OP"><testcase classname="demotests.test_parameter_2" name="test_areas[dimensions1-314.16-circle]" time="0.003" /><testcase time="0.001" /><testcase time="0.001" /><testcase time="0.001" /><testcase time="0.002" /><testcase time="0.001" /><testcase classname="demotests.test_fail.Test_Match" name="test_cube_number" time="0.002" /><testcase classname="demotests.test_parameters_two" name="test_raising_base_to_power[4-2]" time="0.003" /><testcase time="0.002" /><testcase time="0.001" /><testcase classname="demotests.test_parameters_two" name="test_raising_base_to_power[5-3]" time="0.003" /><testcase time="0.001" /><testcase classname="demotests.test_parameters_two" name="test_raising_base_to_power[5-1]" time="0.002" /><testcase time="0.001" /><testcase classname="demotests.test_parameters_two" name="test_raising_base_to_power[4-3]" time="0.002" /><testcase classname="demotests.test_parameters_two" name="test_raising_base_to_power[5-2]" time="0.002" /><testcase classname="demotests.test_parameters_two" name="test_raising_base_to_power[6-1]" time="0.003" /><testcase classname="demotests.test_skip_withoutdecorator" name="test_registration[edge]" time="0.003"><skipped type="pytest.skip" message="Logic was not implemented by the developer">c:\Users\Gaming 15\Downloads\Demo_tests\demotests\test_skip_withoutdecorator.py:42: Logic was not implemented by the developer</skipped></testcase><testcase classname="demotests.test_skip_withoutdecorator" name="test_registration[firefox]" time="0.001"><skipped type="pytest.skip" message="Logic was not implemented by the developer">c:\Users\Gaming 15\Downloads\Demo_tests\demotests\test_skip_withoutdecorator.py:42: Logic was not implemented by the developer</skipped></testcase><testcase classname="demotests.test_stop.Test_Match" name="test_number_square" time="0.002" /><testcase time="0.001" /><testcase time="0.001" /><testcase classname="demotests.test_stop.Test_Match" name="test_cube_number" time="0.002" /><testcase classname="pytest" name="internal" time="0.000"><error message="internal error">def worker_internal_error(
+        self, node: WorkerController, formatted_error: str
+    ) -&gt; None:
+        """
+        pytest_internalerror() was called on the worker.
     
-&gt;       assert area == expected_area, f"Expected {expected_area}, but got {area}"
-E       AssertionError: Expected 50, but got 78.54
-E       assert 78.54 == 50
+        pytest_internalerror() arguments are an excinfo and an excrepr, which can't
+        be serialized, so we go with a poor man's solution of raising an exception
+        here ourselves using the formatted message.
+        """
+        self._active_nodes.remove(node)
+        try:
+&gt;           assert False, formatted_error
+E           AssertionError: Traceback (most recent call last):
+E               File "c:\Users\Gaming 15\.vscode\extensions\ms-python.python-2025.0.0-win32-x64\python_files\vscode_pytest\__init__.py", line 922, in send_message
+E                 __writer = open(TEST_RUN_PIPE, "wb")  # noqa: SIM115, PTH123
+E                            ^^^^^^^^^^^^^^^^^^^^^^^^^
+E             OSError: [Errno 22] Invalid argument: '\\\\.\\pipe\\python-test-results-f9d86490ca9901335080'
+E             
+E             The above exception was the direct cause of the following exception:
+E             
+E             Traceback (most recent call last):
+E               File "C:\Users\Gaming 15\AppData\Roaming\Python\Python312\site-packages\_pytest\main.py", line 283, in wrap_session
+E                 session.exitstatus = doit(config, session) or 0
+E                                      ^^^^^^^^^^^^^^^^^^^^^
+E               File "C:\Users\Gaming 15\AppData\Roaming\Python\Python312\site-packages\_pytest\main.py", line 337, in _main
+E                 config.hook.pytest_runtestloop(session=session)
+E               File "C:\Users\Gaming 15\AppData\Roaming\Python\Python312\site-packages\pluggy\_hooks.py", line 513, in __call__
+E                 return self._hookexec(self.name, self._hookimpls.copy(), kwargs, firstresult)
+E                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E               File "C:\Users\Gaming 15\AppData\Roaming\Python\Python312\site-packages\pluggy\_manager.py", line 120, in _hookexec
+E                 return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+E                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E               File "C:\Users\Gaming 15\AppData\Roaming\Python\Python312\site-packages\pluggy\_callers.py", line 139, in _multicall
+E                 raise exception.with_traceback(exception.__traceback__)
+E               File "C:\Users\Gaming 15\AppData\Roaming\Python\Python312\site-packages\pluggy\_callers.py", line 122, in _multicall
+E                 teardown.throw(exception)  # type: ignore[union-attr]
+E                 ^^^^^^^^^^^^^^^^^^^^^^^^^
+E               File "C:\Users\Gaming 15\AppData\Roaming\Python\Python312\site-packages\_pytest\logging.py", line 803, in pytest_runtestloop
+E                 return (yield)  # Run all the tests.
+E                         ^^^^^
+E               File "C:\Users\Gaming 15\AppData\Roaming\Python\Python312\site-packages\pluggy\_callers.py", line 122, in _multicall
+E                 teardown.throw(exception)  # type: ignore[union-attr]
+E                 ^^^^^^^^^^^^^^^^^^^^^^^^^
+E               File "C:\Users\Gaming 15\AppData\Roaming\Python\Python312\site-packages\_pytest\terminal.py", line 673, in pytest_runtestloop
+E                 result = yield
+E                          ^^^^^
+E               File "C:\Users\Gaming 15\AppData\Roaming\Python\Python312\site-packages\pluggy\_callers.py", line 103, in _multicall
+E                 res = hook_impl.function(*args)
+E                       ^^^^^^^^^^^^^^^^^^^^^^^^^
+E               File "C:\Users\Gaming 15\AppData\Roaming\Python\Python312\site-packages\xdist\remote.py", line 174, in pytest_runtestloop
+E                 self.run_one_test()
+E               File "C:\Users\Gaming 15\AppData\Roaming\Python\Python312\site-packages\xdist\remote.py", line 195, in run_one_test
+E                 self.config.hook.pytest_runtest_protocol(item=item, nextitem=nextitem)
+E               File "C:\Users\Gaming 15\AppData\Roaming\Python\Python312\site-packages\pluggy\_hooks.py", line 513, in __call__
+E                 return self._hookexec(self.name, self._hookimpls.copy(), kwargs, firstresult)
+E                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E               File "C:\Users\Gaming 15\AppData\Roaming\Python\Python312\site-packages\pluggy\_manager.py", line 120, in _hookexec
+E                 return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+E                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E               File "C:\Users\Gaming 15\AppData\Roaming\Python\Python312\site-packages\pluggy\_callers.py", line 182, in _multicall
+E                 return outcome.get_result()
+E                        ^^^^^^^^^^^^^^^^^^^^
+E               File "C:\Users\Gaming 15\AppData\Roaming\Python\Python312\site-packages\pluggy\_result.py", line 100, in get_result
+E                 raise exc.with_traceback(exc.__traceback__)
+E               File "C:\Users\Gaming 15\AppData\Roaming\Python\Python312\site-packages\pluggy\_callers.py", line 167, in _multicall
+E                 teardown.throw(outcome._exception)
+E               File "C:\Users\Gaming 15\AppData\Roaming\Python\Python312\site-packages\_pytest\warnings.py", line 112, in pytest_runtest_protocol
+E                 return (yield)
+E                         ^^^^^
+E               File "C:\Users\Gaming 15\AppData\Roaming\Python\Python312\site-packages\pluggy\_callers.py", line 167, in _multicall
+E                 teardown.throw(outcome._exception)
+E               File "C:\Users\Gaming 15\AppData\Roaming\Python\Python312\site-packages\_pytest\assertion\__init__.py", line 176, in pytest_runtest_protocol
+E                 return (yield)
+E                         ^^^^^
+E               File "C:\Users\Gaming 15\AppData\Roaming\Python\Python312\site-packages\pluggy\_callers.py", line 167, in _multicall
+E                 teardown.throw(outcome._exception)
+E               File "C:\Users\Gaming 15\AppData\Roaming\Python\Python312\site-packages\_pytest\unittest.py", line 429, in pytest_runtest_protocol
+E                 res = yield
+E                       ^^^^^
+E               File "C:\Users\Gaming 15\AppData\Roaming\Python\Python312\site-packages\pluggy\_callers.py", line 167, in _multicall
+E                 teardown.throw(outcome._exception)
+E               File "C:\Users\Gaming 15\AppData\Roaming\Python\Python312\site-packages\_pytest\faulthandler.py", line 88, in pytest_runtest_protocol
+E                 return (yield)
+E                         ^^^^^
+E               File "C:\Users\Gaming 15\AppData\Roaming\Python\Python312\site-packages\pluggy\_callers.py", line 103, in _multicall
+E                 res = hook_impl.function(*args)
+E                       ^^^^^^^^^^^^^^^^^^^^^^^^^
+E               File "C:\Users\Gaming 15\AppData\Roaming\Python\Python312\site-packages\_pytest\runner.py", line 113, in pytest_runtest_protocol
+E                 runtestprotocol(item, nextitem=nextitem)
+E               File "C:\Users\Gaming 15\AppData\Roaming\Python\Python312\site-packages\_pytest\runner.py", line 132, in runtestprotocol
+E                 reports.append(call_and_report(item, "call", log))
+E                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E               File "C:\Users\Gaming 15\AppData\Roaming\Python\Python312\site-packages\_pytest\runner.py", line 246, in call_and_report
+E                 ihook.pytest_runtest_logreport(report=report)
+E               File "C:\Users\Gaming 15\AppData\Roaming\Python\Python312\site-packages\pluggy\_hooks.py", line 513, in __call__
+E                 return self._hookexec(self.name, self._hookimpls.copy(), kwargs, firstresult)
+E                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E               File "C:\Users\Gaming 15\AppData\Roaming\Python\Python312\site-packages\pluggy\_manager.py", line 120, in _hookexec
+E                 return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+E                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E               File "C:\Users\Gaming 15\AppData\Roaming\Python\Python312\site-packages\pluggy\_callers.py", line 139, in _multicall
+E                 raise exception.with_traceback(exception.__traceback__)
+E               File "C:\Users\Gaming 15\AppData\Roaming\Python\Python312\site-packages\pluggy\_callers.py", line 103, in _multicall
+E                 res = hook_impl.function(*args)
+E                       ^^^^^^^^^^^^^^^^^^^^^^^^^
+E               File "C:\Users\Gaming 15\AppData\Roaming\Python\Python312\site-packages\_pytest\terminal.py", line 595, in pytest_runtest_logreport
+E                 *self.config.hook.pytest_report_teststatus(report=rep, config=self.config)
+E                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E               File "C:\Users\Gaming 15\AppData\Roaming\Python\Python312\site-packages\pluggy\_hooks.py", line 513, in __call__
+E                 return self._hookexec(self.name, self._hookimpls.copy(), kwargs, firstresult)
+E                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E               File "C:\Users\Gaming 15\AppData\Roaming\Python\Python312\site-packages\pluggy\_manager.py", line 120, in _hookexec
+E                 return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+E                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E               File "C:\Users\Gaming 15\AppData\Roaming\Python\Python312\site-packages\pluggy\_callers.py", line 182, in _multicall
+E                 return outcome.get_result()
+E                        ^^^^^^^^^^^^^^^^^^^^
+E               File "C:\Users\Gaming 15\AppData\Roaming\Python\Python312\site-packages\pluggy\_result.py", line 100, in get_result
+E                 raise exc.with_traceback(exc.__traceback__)
+E               File "C:\Users\Gaming 15\AppData\Roaming\Python\Python312\site-packages\pluggy\_callers.py", line 88, in _multicall
+E                 next(wrapper_gen)  # first yield
+E                 ^^^^^^^^^^^^^^^^^
+E               File "c:\Users\Gaming 15\.vscode\extensions\ms-python.python-2025.0.0-win32-x64\python_files\vscode_pytest\__init__.py", line 286, in pytest_report_teststatus
+E                 send_execution_message(
+E               File "c:\Users\Gaming 15\.vscode\extensions\ms-python.python-2025.0.0-win32-x64\python_files\vscode_pytest\__init__.py", line 866, in send_execution_message
+E                 send_message(payload)
+E               File "c:\Users\Gaming 15\.vscode\extensions\ms-python.python-2025.0.0-win32-x64\python_files\vscode_pytest\__init__.py", line 933, in send_message
+E                 raise VSCodePytestError(error_msg) from error
+E             vscode_pytest.VSCodePytestError: Error attempting to connect to extension named pipe \\.\pipe\python-test-results-f9d86490ca9901335080[vscode-pytest]: [Errno 22] Invalid argument: '\\\\.\\pipe\\python-test-results-f9d86490ca9901335080'
+E           assert False
 
-demotests\test_parameter_2.py:15: AssertionError</failure></testcase><testcase classname="demotests.test_parameter_2" name="test_areas[dimensions1-314.16-circle]" time="0.014" /><testcase classname="demotests.test_parameters" name="test_lambdaest_two_input_fields[30-40-70]" time="95.463" /><testcase classname="demotests.test_parameters_two" name="test_raising_base_to_power[4-2]" time="0.015" /><testcase classname="demotests.test_parameters_two" name="test_lambdaest_two_input_fields[25-25-50]" time="123.136" /><testcase classname="demotests.test_skip.TestLambdaTest" name="test_sample_app_title" time="85.046"><skipped type="pytest.skip" message="Skipped">c:\Users\Gaming 15\Downloads\Demo_tests\demotests\test_skip.py:14: Skipped</skipped></testcase><testcase classname="demotests.test_parameters_two" name="test_raising_base_to_power[5-1]" time="0.014" /><testcase classname="demotests.test_parameters_two" name="test_lambdaest_two_input_fields[30-40-70]" time="119.846" /><testcase classname="demotests.test_parameters_two" name="test_raising_base_to_power[5-3]" time="0.015" /><testcase classname="demotests.test_parameters" name="test_lambdaest_two_input_fields[25-25-50]" time="106.553" /><testcase classname="demotests.test_parameters_two" name="test_raising_base_to_power[6-2]" time="0.016" /><testcase classname="demotests.test_parameter_one" name="test_name[franklyne-franklyne]" time="93.372" /><testcase classname="demotests.test_parameters_two" name="test_raising_base_to_power[4-3]" time="0.004" /><testcase classname="demotests.test_parameters_two" name="test_raising_base_to_power[5-2]" time="0.006" /><testcase classname="demotests.test_parameters_two" name="test_raising_base_to_power[6-1]" time="0.005" /><testcase classname="demotests.test_parameters_two" name="test_raising_base_to_power[6-3]" time="0.005" /><testcase classname="demotests.test_fail.Test_Match" name="test_square_number" time="0.007"><skipped type="pytest.xfail" message="Result Add Numbers &amp; Not Multiply Numbers" /></testcase><testcase classname="demotests.test_skip.TestLambdaTest" name="test_pytest_github_repo" time="0.003"><skipped type="pytest.skip" message="Repo is not complete until after finishing tutorial">c:\Users\Gaming 15\Downloads\Demo_tests\demotests\test_skip.py:25: Repo is not complete until after finishing tutorial</skipped></testcase><testcase classname="demotests.test_parameter_2" name="test_areas[dimensions1-314.16-rectangle]" time="0.012"><failure message="IndexError: tuple index out of range">shape = 'rectangle', dimensions = (10,), expected_area = 314.16
-
-    @pytest.mark.parametrize("shape", ["rectangle", "circle"])
-    @pytest.mark.parametrize("dimensions, expected_area", [((5, 10), 50), ((10,), round(math.pi * 10**2, 2))])
-    def test_areas(shape, dimensions, expected_area):
-        if shape == "rectangle":
-&gt;           area = dimensions[0] * dimensions[1]  # width * height
-E           IndexError: tuple index out of range
-
-demotests\test_parameter_2.py:9: IndexError</failure></testcase><testcase classname="demotests.test_skip_withoutdecorator" name="test_registration[edge]" time="0.005"><skipped type="pytest.skip" message="Logic was not implemented by the developer">c:\Users\Gaming 15\Downloads\Demo_tests\demotests\test_skip_withoutdecorator.py:42: Logic was not implemented by the developer</skipped></testcase><testcase classname="demotests.test_skip_withoutdecorator" name="test_registration[firefox]" time="0.003"><skipped type="pytest.skip" message="Logic was not implemented by the developer">c:\Users\Gaming 15\Downloads\Demo_tests\demotests\test_skip_withoutdecorator.py:42: Logic was not implemented by the developer</skipped></testcase><testcase classname="demotests.test_stop.Test_Match" name="test_number_square" time="0.004" /><testcase classname="demotests.test_stop.Test_Match" name="test_cube_number" time="0.005" /><testcase classname="demotests.test_stop.Test_Match" name="test_square_number" time="0.008"><skipped type="pytest.xfail" message="Result Add Numbers &amp; Not Multiply Numbers" /></testcase><testcase classname="demotests.test_fail.Test_Match" name="test_number_square" time="0.003"><skipped type="pytest.xfail" message="[NOTRUN] " /></testcase><testcase classname="demotests.test_stop.Test_Match" name="test_divide_number" time="0.009"><skipped type="pytest.xfail" message="Need To Investigate" /></testcase><testcase classname="demotests.test_fixture_parameters" name="test_submit[chrome]" time="190.734" /><testcase classname="demotests.test_skip.TestLambdaTest" name="test_ecommerce_title" time="0.003"><skipped type="pytest.skip" message="Code Has Not Been Deployed">c:\Users\Gaming 15\Downloads\Demo_tests\demotests\test_skip.py:18: Code Has Not Been Deployed</skipped></testcase><testcase classname="demotests.test_skip_withoutdecorator" name="test_registration[chrome]" time="0.008"><skipped type="pytest.skip" message="Logic was not implemented by the developer">c:\Users\Gaming 15\Downloads\Demo_tests\demotests\test_skip_withoutdecorator.py:42: Logic was not implemented by the developer</skipped></testcase><testcase classname="demotests.test_parameters_crossBrowser.Test_Drivers" name="test_multiple_browsers[chrome]" time="52.200" /><testcase classname="demotests.test_parameters" name="test_lambdaest_two_input_fields[10-10-20]" time="38.500" /><testcase classname="demotests.test_parameters_two" name="test_raising_base_to_power[4-1]" time="0.013" /><testcase classname="demotests.test_parameters_two" name="test_lambdaest_two_input_fields[10-10-20]" time="38.176" /><testcase classname="demotests.test_parameters_crossBrowser.Test_Drivers" name="test_multiple_browsers[firefox]" time="162.945" /><testcase classname="demotests.test_fixture_parameters" name="test_submit[firefox]" time="201.048" /><testcase classname="demotests.test_parameters_crossBrowser.Test_Drivers" name="test_multiple_browsers[edge]" time="57.147" /><testcase classname="demotests.test_parameter_2" name="test_areas[dimensions0-50-rectangle]" time="0.006" /><testcase classname="demotests.test_fixture_parameters" name="test_submit[edge]" time="61.053" /></testsuite></testsuites>
+..\..\AppData\Roaming\Python\Python312\site-packages\xdist\dsession.py:232: AssertionError</error><error message="internal error">Traceback (most recent call last):
+  File "C:\Users\Gaming 15\AppData\Roaming\Python\Python312\site-packages\_pytest\main.py", line 283, in wrap_session
+    session.exitstatus = doit(config, session) or 0
+                         ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Gaming 15\AppData\Roaming\Python\Python312\site-packages\_pytest\main.py", line 337, in _main
+    config.hook.pytest_runtestloop(session=session)
+  File "C:\Users\Gaming 15\AppData\Roaming\Python\Python312\site-packages\pluggy\_hooks.py", line 513, in __call__
+    return self._hookexec(self.name, self._hookimpls.copy(), kwargs, firstresult)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Gaming 15\AppData\Roaming\Python\Python312\site-packages\pluggy\_manager.py", line 120, in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Gaming 15\AppData\Roaming\Python\Python312\site-packages\pluggy\_callers.py", line 139, in _multicall
+    raise exception.with_traceback(exception.__traceback__)
+  File "C:\Users\Gaming 15\AppData\Roaming\Python\Python312\site-packages\pluggy\_callers.py", line 122, in _multicall
+    teardown.throw(exception)  # type: ignore[union-attr]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Gaming 15\AppData\Roaming\Python\Python312\site-packages\_pytest\logging.py", line 803, in pytest_runtestloop
+    return (yield)  # Run all the tests.
+            ^^^^^
+  File "C:\Users\Gaming 15\AppData\Roaming\Python\Python312\site-packages\pluggy\_callers.py", line 122, in _multicall
+    teardown.throw(exception)  # type: ignore[union-attr]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Gaming 15\AppData\Roaming\Python\Python312\site-packages\_pytest\terminal.py", line 673, in pytest_runtestloop
+    result = yield
+             ^^^^^
+  File "C:\Users\Gaming 15\AppData\Roaming\Python\Python312\site-packages\pluggy\_callers.py", line 103, in _multicall
+    res = hook_impl.function(*args)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Gaming 15\AppData\Roaming\Python\Python312\site-packages\xdist\dsession.py", line 138, in pytest_runtestloop
+    self.loop_once()
+  File "C:\Users\Gaming 15\AppData\Roaming\Python\Python312\site-packages\xdist\dsession.py", line 163, in loop_once
+    call(**kwargs)
+  File "C:\Users\Gaming 15\AppData\Roaming\Python\Python312\site-packages\xdist\dsession.py", line 217, in worker_workerfinished
+    assert not crashitem, (crashitem, node)
+AssertionError: ('demotests/test_parameters_two.py::test_raising_base_to_power[6-2]', &lt;WorkerController gw16&gt;)
+assert not 'demotests/test_parameters_two.py::test_raising_base_to_power[6-2]'</error></testcase></testsuite></testsuites>
